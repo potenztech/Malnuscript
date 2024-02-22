@@ -289,9 +289,8 @@ function startAnimationFromIndex5() {
                     containerIndex,
                     0,
                     function () {
-                        if (containerIndex < 29) { // Only show 2 array values, so change condition to '< 1'
-                            displayWithDelay(containerIndex + 1);
-                        }
+                        displayWithDelay(containerIndex + 1);
+                        
                     }
                 );
             }
