@@ -271,6 +271,7 @@ function timeToMilliseconds(time) {
     return (minutes * 60 + seconds) * 1000; // Convert to milliseconds
 }
 var video = document.getElementById('videoplay');
+video.volume = 0.1;
 var animationStarted = false; // Flag to track whether animation has already started
 
 function startAnimationFromIndex5() {
