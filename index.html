@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Messages with Sound</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Audio element for the message tone -->
+  <audio id="messageTone" preload="auto">
+    <source src="Music/iphone_msg_send.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="full-body">
+    <div class="intro" id="intro">
+      <img src="images/Splash.png" class="bg-img">
+      <div class="intro-content">
+        <img src="images/Avatars.png">
+        <h3 class="heading-3">What is MalnuScripts?</h3>
+        <p>A bunch of people have asked the same thing and Ivan finally issued a statement!</p>
+        <div class="time-div">
+          <div class="time" id="time1">
+            <p>3</p>
+          </div>
+          <div class="time" id="time2">
+            <p>2</p>
+          </div>
+          <div class="time" id="time3">
+            <p>1</p>
+          </div>
+          <div class="time" id="time4">
+            <p id="startAnimationButton">Go!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <div class="navbar-container">
+        <div class="left-content">
+          <div class="unread-message-wrap" onclick="togglePopup()">
+            <img src="images/alert-circle.svg" alt="Message Avatar">
+          </div>
+          <!-- <div class="popup-info">
+
+              </div> -->
+        </div>
+        <div class="middle-content">
+          <div class="logo-wrap">
+            <img id="changingLogo" src="images/Carter.png" alt="avatar1" class="img logo">
+          </div>
+          <div class="logo-text">The Unforgiven
+            <svg width="4" height="9" viewBox="0 0 4 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4 4.49999C4 4.39774 3.9591 4.30367 3.88139 4.23005L0.642127 1.05623C0.568507 0.9867 0.478528 0.94989 0.372188 0.94989C0.163599 0.94989 0 1.1094 0 1.32208C0 1.42433 0.0408998 1.5184 0.106339 1.58793L3.08384 4.49999L0.106339 7.41206C0.0408998 7.48159 0 7.57157 0 7.67791C0 7.89059 0.163599 8.0501 0.372188 8.0501C0.478528 8.0501 0.568507 8.01329 0.642127 7.93967L3.88139 4.76993C3.9591 4.69222 4 4.60224 4 4.49999Z"
+                fill="#5D5D60" />
+            </svg>
+          </div>
+        </div>
+        <div class="right-content">
+          <img src="images/fe_share.png" alt="icon">
+        </div>
+      </div>
+
+
+    </nav>
+    <!-- Container for messages -->
+
+    <!-- messages 1 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages1">
+      </div>
+      <div class="typing" id="typ1">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer1">
+        <div class="img">
+          <img src="images/Carter.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Carter
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 2 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages2">
+      </div>
+      <div class="typing" id="typ2">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+    </div>
+    <div class="message-section-right" id="msgvideo">
+      <div class="video-div" style="display: none;">
+        <video width="100%" controls id="videoplay">
+          <source src="images/sample.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <!-- messages 3 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages3"></div>
+      <div class="typing" id="typ3">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer3">
+        <div class="time-text">
+          Ivan
+        </div>
+        <div class="img">
+          <img src="images/Ivan.png" class="user-framer" alt="framer">
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 4 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages4"></div>
+      <div class="typing" id="typ4">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      
+    </div>
+
+    <!-- messages 5 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages5"></div>
+      <div class="typing" id="typ5">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer5">
+        <div class="img">
+          <img src="images/Carter.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Carter
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 6 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages6"></div>
+      <div class="typing" id="typ6">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer6">
+        <div class="img">
+          <img src="images/Bianca.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Bianca
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 7 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages7"></div>
+      <div class="typing" id="typ7">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer7">
+        <div class="img">
+          <img src="images/Caroline.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Caroline
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 8 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages8"></div>
+      <div class="typing" id="typ8">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer8">
+        <div class="img">
+          <img src="images/Jeff.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Jeff
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 9 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages9"></div>
+      <div class="typing" id="typ9">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer9">
+
+        <div class="img">
+          <img src="images/Suzie.png" class="user-framer">
+        </div>
+        <div class="time-text">
+          Suzie
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 10 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages10"></div>
+      <div class="typing" id="typ10">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer10">
+        <div class="img">
+          <img src="images/Mariah.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Mariah
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 11 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages11"></div>
+      <div class="typing" id="typ11">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer11">
+        <div class="img">
+          <img src="images/Hellen.png" class="user-framer" alt="">
+        </div>
+        <div class="time-text">
+          Hellen
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 12 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages12"></div>
+      <div class="typing" id="typ12">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer12">
+        <div class="img">
+          <img src="images/Joseph.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Joseph
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 13 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages13"></div>
+      <div class="typing" id="typ13">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer13">
+        <div class="img">
+          <img src="images/Marie.png" class="user-framer" alt="">
+        </div>
+        <div class="time-text">
+          Marie
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 14 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages14"></div>
+      <div class="typing" id="typ14">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer14">
+        <div class="img">
+          <img src="images/Brenda.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Brenda
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 15 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages15"></div>
+      <div class="typing" id="typ15">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer15">
+        <div class="img">
+          <img src="images/Alyssa.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Alyssa
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 16 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages16"></div>
+      <div class="typing" id="typ16">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer16">
+        <div class="img">
+          <img src="images/Karen.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Karen
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 17 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages17"></div>
+      <div class="typing" id="typ17">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer17">
+        <div class="img">
+          <img src="images/Aya.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Aya
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 18 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages18"></div>
+      <div class="typing" id="typ18">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer18">
+        <div class="img">
+          <img src="images/Serge.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Serge
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 19 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages19"></div>
+      <div class="typing" id="typ19">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer19">
+        <div class="img">
+          <img src="images/Hannah.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Hannah
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 20 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages20"></div>
+      <div class="typing" id="typ20">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 35px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer20">
+        <div class="img">
+          <img src="images/Danny.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Danny
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 21 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages21">
+      </div>
+      <div class="typing" id="typ21">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer21">
+        <div class="img">
+          <img src="images/Kim.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Kim
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 22 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages22">
+      </div>
+      <div class="typing" id="typ22">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer22">
+        <div class="img">
+          <img src="images/Sarah.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Sarah
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 23 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages23"></div>
+      <div class="typing" id="typ23">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer23">
+        <div class="img">
+          <img src="images/Alimah.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Alimah
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 24 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages24"></div>
+      <div class="typing" id="typ24">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer24">
+        <div class="img">
+          <img src="images/Antwan.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Antwan
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 25 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages25"></div>
+      <div class="typing" id="typ25">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer25">
+        <div class="img">
+          <img src="images/Rudy.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Rudy
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 26 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages26"></div>
+      <div class="typing" id="typ26">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer26">
+        <div class="img">
+          <img src="images/Amina.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Amina
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 27 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages27"></div>
+      <div class="typing" id="typ27">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer27">
+        <div class="img">
+          <img src="images/Shanice.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Shanice
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 28 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages28"></div>
+      <div class="typing" id="typ28">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer28">
+        <div class="img">
+          <img src="images/Henry.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Henry
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 29 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages29"></div>
+      <div class="typing" id="typ29">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer29">
+
+        <div class="img">
+          <img src="images/Rosalyn.png" class="user-framer">
+        </div>
+        <div class="time-text">
+          Rosalyn
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 30 -->
+    <div class="message-section-left">
+      <div class="messages-container" id="messages30"></div>
+      <div class="typing" id="typ30">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="replay-div">
+        <button id="replay" onclick="startAnimationFromIndex5()">replay</button> this Story
+      </div>
+      <div class="framer" id="framer30">
+        <div class="img">
+          <img src="images/Brian.png" class="user-framer" alt="framer">
+        </div>
+        <div class="time-text">
+          Brian
+        </div>
+      </div>
+      
+    </div>
+
+
+    <!-- messages 31 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages31">
+      </div>
+      <div class="typing" id="typ31">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer31">
+        <div class="time-text">
+          Ivan
+        </div>
+        <div class="img">
+          <img src="images/Ivan.png" class="user-framer" alt="framer">
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 32 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages32"></div>
+      <div class="typing" id="typ32">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer32">
+        <div class="time-text">
+          Ivan
+        </div>
+        <div class="img">
+          <img src="images/Ivan.png" class="user-framer" alt="framer">
+        </div>
+      </div>
+    </div>
+
+    <!-- messages 33 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages33"></div>
+      <div class="typing" id="typ33">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer33">
+        <div class="time-text">
+          You
+        </div>
+        <div class="img">
+          <img src="images/you.png" class="user-framer">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- messages 34 -->
+    <div class="message-section-right">
+      <div class="messages-container" id="messages34"></div>
+      <div class="typing" id="typ34">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"></script>
+        <dotlottie-player src="https://lottie.host/ccc3a451-5c7b-468b-b1d7-b3405aef5dd3/1pS8QRobZa.json"
+          background="transparent" speed="1" style=" height: 30px;" loop autoplay></dotlottie-player>
+      </div>
+      <div class="framer" id="framer34">
+        <div class="time-text">
+          Ivan
+        </div>
+        <div class="img">
+          <img src="images/Ivan.png" class="user-framer" alt="framer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <!-- Popup section start here -->
+  <section class="popup-section" id="popupSection" onclick="togglePopupClose()">
+    <div class="popup-container">
+      <div class="popup-head-wrap">
+        <img src="images/Avatar4.png" alt="Popup Logo" class="popup-logo">
+        <h2>Malnuscripts</h2>
+      </div>
+      <div class="popup-info-wrap">
+        <div class="popup-about">
+          <h4>About</h4>
+          <p>My name is Ivan, and over the course of what remains of your lives,
+            I will attempt to regain a portion of your mind, of your life, by telling you a psychological, paradoxical,
+            social and bibli... <span>more</span> </p>
+        </div>
+        <div class="popup-merch-wrap">
+          <h4>Merch</h4>
+          <div class="merch-slider">
+            <div class="slide">
+              <img src="images/image 1.png" alt="" class="merch-img">
+              <div class="merch-text">Unthink</div>
+            </div>
+            <div class="slide">
+              <img src="images/image 1.png" alt="" class="merch-img">
+              <div class="merch-text">Unthink</div>
+            </div>
+          </div>
+        </div>
+        <div class="popup-link-wrap">
+          <h4>Links</h4>
+          <div class="social-icon-wrap">
+            <img src="images/image 4.png" alt="">
+            <img src="images/image 7.png" alt="">
+            <img src="images/image 6.png" alt="">
+          </div>
+        </div>
+        <button class="watchyt">Watch on youtube<svg width="10" height="12" viewBox="0 0 10 12" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9 4.06794C10.3333 4.83774 10.3333 6.76224 9 7.53204L3 10.9961C1.66666 11.7659 -5.6841e-07 10.8037 -5.01112e-07 9.26409L-1.9827e-07 2.33588C-1.30972e-07 0.796283 1.66667 -0.165965 3 0.603835L9 4.06794Z"
+              fill="white" />
+          </svg></button>
+      </div>
+    </div>
+  </section>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
