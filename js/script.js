@@ -95,14 +95,20 @@ var messagesArrays = [
         "This needed a director?" 
     ],
     [
-        "So, get a chance at winning [***] by ✓sharing it with a loved one, and telling us what you think of this story." 
+        ""
+    ],
+    [ 
+        ""
     ],
     [
-        "Thank you for sharing. The next winner will be announced in 13d 23h 56s.",
+        "Thank you for sharing. A winner is announced every two weeks.",
         "What’s your info so we can notify you?"
     ],
     [
-        "Ivan, ivan@mbakop.com" 
+        "" 
+    ],
+    [
+        ""
     ],
     [
         "Excellent!" 
@@ -191,32 +197,49 @@ function displayMessages(container, messagesArray, containerIndex, messageIndex,
                         fullContainer.style.display = "block";
                     }
                 } 
-                if (containerIndex === 2 && messageIndex === messagesArray.length - 1) {
-                    var plansDetailsWraps = document.querySelectorAll(".plans-details-wrap1, .plans-details-wrap2, .plans-details-wrap3");
-
-                    // Function to reveal elements with a scroll effect
-                    function revealElementsWithScroll(index) {
-                        if (index < plansDetailsWraps.length) {
-                            plansDetailsWraps[index].style.display = "block";
-                            plansDetailsWraps[index].scrollIntoView({ behavior: "smooth" });
-                            setTimeout(function () {
-                                revealElementsWithScroll(index + 1);
-                            }, 500); // Adjust the delay between elements as needed (in milliseconds)
+                                           
+                if (container.id === "messages30" && messageIndex === messagesArray.length - 1) {
+                 
+                        var linkContainer = document.querySelector(".replay-div");
+                        if (linkContainer) {
+                            linkContainer.style.display = "flex";
                         }
+                    
+                }
+                if (container.id === "messages31" && messageIndex === messagesArray.length - 1) {
+                    // Additionally, show the .accordion container
+                    var msg31div = document.querySelector(".msg31");
+                    if (msg31div) {
+                        msg31div.style.display = "block";
                     }
-
-                    // Start revealing elements with a scroll effect
-                    revealElementsWithScroll(0);
                 }
-
-                // Check if the current container is #messages7
-                if (containerIndex === 2) { // Check if it's the #messages3 container
-                    // Display the .video-div before starting the animation
-                    document.querySelector('.video-div').style.display = 'block !important';
+                if (container.id === "messages32" && messageIndex === messagesArray.length - 1) {
+                    // Additionally, show the .accordion container
+                    var input1div = document.querySelector(".input-1");
+                    if (input1div) {
+                        input1div.style.display = "block";
+                    }
                 }
-                if (containerIndex === 30) { // Check if it's the #messages3 container
-                    // Display the .video-div before starting the animation
-                    document.querySelector('.replay-div').style.display = 'flex !important';
+                if (container.id === "messages34" && messageIndex === messagesArray.length - 1) {
+                    // Additionally, show the .accordion container
+                    var input1div = document.querySelector(".input-2");
+                    if (input1div) {
+                        input1div.style.display = "block";
+                    }
+                }
+                if (container.id === "messages35" && messageIndex === messagesArray.length - 1) {
+                    // Additionally, show the .accordion container
+                    var input1div = document.querySelector(".input-3");
+                    if (input1div) {
+                        input1div.style.display = "block";
+                    }
+                }
+                if (container.id === "messages36" && messageIndex === messagesArray.length - 1) {
+                    // Additionally, show the .accordion container
+                    var input1div = document.querySelector(".msg36");
+                    if (input1div) {
+                        input1div.style.display = "block";
+                    }
                 }
             }, delay);
         });
@@ -264,19 +287,47 @@ function startAnimation() {
     }
     displayWithDelay(0);
 }
+
 function timeToMilliseconds(time) {
     var splitTime = time.split(":");
     var minutes = parseInt(splitTime[0]);
     var seconds = parseInt(splitTime[1]);
     return (minutes * 60 + seconds) * 1000; // Convert to milliseconds
 }
+
 var video = document.getElementById('videoplay');
 video.volume = 0.1;
 var animationStarted = false; // Flag to track whether animation has already started
 
 function startAnimationFromIndex5() {
     // Define an array of delay times for each container index
-    var delayTimes = ["02:00", "03:00", "01:30", "00:10","00:02","00:08"]; // Add your desired delay times here
+   var delayTimes = ["", "", "", "","00:07","00:09","00:19","00:05","00:08","00:14","00:07","00:25","00:09","00:02","00:11","00:39","00:11","00:09","00:28","00:09","00:03","00:05","00:15","00:01","00:05","00:18","00:03","00:05","00:13","00:05","00:04"]; // Add your desired delay times here
+    // Convert delay times to milliseconds
+    var delayTimesInMilliseconds = delayTimes.map(timeToMilliseconds);// Add your desired delay times here
+
+    function displayWithDelay(containerIndex) {
+        setTimeout(function () {
+            if (containerIndex < messagesArrays.length) {
+                displayMessages(
+                    messageContainers[containerIndex],
+                    messagesArrays[containerIndex],
+                    containerIndex,
+                    0,
+                    function () {
+                        if (containerIndex < 30) { 
+                            displayWithDelay(containerIndex + 1);
+                        }
+                    }
+                );
+            }
+        },  delayTimesInMilliseconds[containerIndex] || 10); // Use the specified delay time or default to 1000 milliseconds (1 second)
+    }
+
+    displayWithDelay(4); // Start with array index 3
+}
+function startAnimationFromIndex30() {
+    // Define an array of delay times for each container index
+    var delayTimes = []; // Add your desired delay times here
 
     // Convert delay times to milliseconds
     var delayTimesInMilliseconds = delayTimes.map(timeToMilliseconds);// Add your desired delay times here
@@ -290,17 +341,118 @@ function startAnimationFromIndex5() {
                     containerIndex,
                     0,
                     function () {
-                        displayWithDelay(containerIndex + 1);
-                        
+                        if (containerIndex < 31) { 
+                            displayWithDelay(containerIndex + 1);
+                        }
                     }
                 );
             }
-        },  delayTimesInMilliseconds[containerIndex] || 1000); // Use the specified delay time or default to 1000 milliseconds (1 second)
+        },  delayTimesInMilliseconds[containerIndex] || 10); // Use the specified delay time or default to 1000 milliseconds (1 second)
     }
 
-    displayWithDelay(4); // Start with array index 3
+    displayWithDelay(31); // Start with array index 3
+}
+function startAnimationFromIndex32() {
+    
+    var inputData1 = document.getElementById("input1").value;
+    document.getElementById("convertedText1").innerText = inputData1;
+    document.getElementById("sendButton1").remove();
+    document.getElementById("input1").remove();
+    // Define an array of delay times for each container index
+    var delayTimes = []; // Add your desired delay times here
+
+    // Convert delay times to milliseconds
+    var delayTimesInMilliseconds = delayTimes.map(timeToMilliseconds);// Add your desired delay times here
+
+    function displayWithDelay(containerIndex) {
+        setTimeout(function () {
+            if (containerIndex < messagesArrays.length) {
+                displayMessages(
+                    messageContainers[containerIndex],
+                    messagesArrays[containerIndex],
+                    containerIndex,
+                    0,
+                    function () {
+                        if (containerIndex < 33) { 
+                            displayWithDelay(containerIndex + 1);
+                        }
+                    }
+                );
+            }
+        },  delayTimesInMilliseconds[containerIndex] || 10); // Use the specified delay time or default to 1000 milliseconds (1 second)
+    }
+
+    displayWithDelay(32); // Start with array index 3
+
 }
 
+function startAnimationFromIndex34() {
+    
+    var inputData2 = document.getElementById("input2").value;
+    document.getElementById("convertedText2").innerText = inputData2;
+    document.getElementById("sendButton2").remove();
+    document.getElementById("input2").remove();
+    // Define an array of delay times for each container index
+    var delayTimes = []; // Add your desired delay times here
+
+    // Convert delay times to milliseconds
+    var delayTimesInMilliseconds = delayTimes.map(timeToMilliseconds);// Add your desired delay times here
+
+    function displayWithDelay(containerIndex) {
+        setTimeout(function () {
+            if (containerIndex < messagesArrays.length) {
+                displayMessages(
+                    messageContainers[containerIndex],
+                    messagesArrays[containerIndex],
+                    containerIndex,
+                    0,
+                    function () {
+                        if (containerIndex < 34) { 
+                            displayWithDelay(containerIndex + 1);
+                        }
+                    }
+                );
+            }
+        },  delayTimesInMilliseconds[containerIndex] || 10); // Use the specified delay time or default to 1000 milliseconds (1 second)
+    }
+
+    displayWithDelay(34); // Start with array index 3
+
+}
+
+function startAnimationFromIndex35() {
+    
+    var inputData3 = document.getElementById("input3").value;
+    document.getElementById("convertedText3").innerText = inputData3;
+    document.getElementById("sendButton3").remove();
+    document.getElementById("input3").remove();
+    // Define an array of delay times for each container index
+    var delayTimes = []; // Add your desired delay times here
+
+    // Convert delay times to milliseconds
+    var delayTimesInMilliseconds = delayTimes.map(timeToMilliseconds);// Add your desired delay times here
+
+    function displayWithDelay(containerIndex) {
+        setTimeout(function () {
+            if (containerIndex < messagesArrays.length) {
+                displayMessages(
+                    messageContainers[containerIndex],
+                    messagesArrays[containerIndex],
+                    containerIndex,
+                    0,
+                    function () {
+                        
+                            displayWithDelay(containerIndex + 1);
+
+                    }
+                );
+            }
+        },  delayTimesInMilliseconds[containerIndex] || 10); // Use the specified delay time or default to 1000 milliseconds (1 second)
+    }
+
+    displayWithDelay(35); // Start with array index 3
+
+}
 
 video.addEventListener('play', function() {
     if (!animationStarted) {
@@ -363,8 +515,11 @@ function togglePopupClose() {
     // Navbar Logo Change 
 
 var logoSources = [
-    { src: "images/Group 1 (32).svg", interval: 10000 },
-    { src: "images/Group 1 (33).svg", interval: 15000 }
+    { src: "images/Carter.png", interval: 17000 },
+    { src: "images/Avatars 2.png", interval: 20000 },
+    { src: "images/Avatars 3.png", interval: 6000 },
+    { src: "images/Avatars 4.png", interval: 89000 },
+    { src: "images/Avatars 5.png", interval: 15000 }
 ];
 
 var changingLogo = document.getElementById("changingLogo");
@@ -384,6 +539,54 @@ function changeLogo() {
     }
 }
 
+
+function toggleLinks() {
+    var spans = document.querySelectorAll('.normal-text', 'link-text-1', 'link-text-2');
+    for (var i = 0; i < spans.length; i++) {
+        var text = spans[i].textContent;
+        var link = document.createElement('a');
+        link.href = '#';
+        link.textContent = text;
+        link.onclick = function() {
+            startAnimationFromIndex30();
+            
+            this.onclick = null;
+            
+        };
+        
+        spans[i].innerHTML = '';
+        spans[i].appendChild(link);
+        spans[i].classList.remove('normal-text');
+        spans[i].classList.add('link-text-1');
+    }
+    var linkText1 = document.querySelector('.link-text-1');
+    if (linkText1) {
+      linkText1.classList.remove('link-text-1');
+    linkText1.classList.add('normal-text-bold');
+    }
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'Your Website Title',
+        url: window.location.href
+      }).then(() => {
+        console.log('Shared successfully');
+      }).catch((error) => {
+        console.error('Error sharing:', error);
+      });
+    } else {
+      console.log('Sharing not supported on this browser');
+    }
+
+  }
+
+  document.getElementById('reloadLink').addEventListener('click', function(event) {
+    // Prevent the default action of the link (preventing it from navigating to another page)
+    event.preventDefault();
+    
+    // Reload the page
+    window.location.reload();
+  });
 // let currenttIndex = 0;
 // const slides = document.querySelectorAll('.slide');
 // const totalSlides = slides.length;
