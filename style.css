@@ -826,7 +826,9 @@ input[type=text]:focus {
         height: 50px;
         width: 50px;
     }
-    
+    #messages1{
+        margin-top:150px;
+    }
     .popup-head-wrap {
         display: flex;
         flex-direction: column;
