@@ -123,6 +123,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    height: 40px;
 }
 
 .logo {
@@ -142,6 +143,7 @@ p span {
 
 .logo-wrap {
     display: flex;
+    width: auto;
 }
 
 .logo img {
