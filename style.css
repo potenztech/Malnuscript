@@ -471,14 +471,14 @@ input[type=text]:focus {
     padding: 10px 15px 0px 15px;
 }
 
-.framer,
-.typing {
+.framer {
    
     display: none;
     gap: 10px;
     align-items: center;
 }
 .typing {
+    display: none;
     justify-content: flex-end;
 }
 #messageTone {
