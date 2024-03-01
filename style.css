@@ -25,14 +25,16 @@
 }
 
 .time-div {
-    width: 70px;
+    width: 95px;
     height: 95px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
 .time {
-    margin-top: 30px;
     position: absolute;
     display: flex;
     align-items: center;
@@ -102,14 +104,15 @@
 }
 
 nav {
-    padding: 15px 15px 15px 15px;
-    position: sticky;
+    position: fixed;
+    width: 100vw;
     top: 0px;
     z-index: 2;
     background-color: white;
 }
 
 .navbar-container {
+    padding: 15px 15px 15px 15px;
     max-width: 440px;
     margin: auto;
     display: flex;
@@ -291,7 +294,7 @@ section {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 #messages1{
-    margin-top:40px;
+    margin-top:100px;
 }
 
 .time-text {
@@ -474,7 +477,9 @@ input[type=text]:focus {
     gap: 10px;
     align-items: center;
 }
-
+.typing {
+    justify-content: flex-end;
+}
 #messageTone {
     display: none;
 }
@@ -820,5 +825,13 @@ input[type=text]:focus {
         height: 50px;
         width: 50px;
     }
+    
+    .popup-head-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
 }
-

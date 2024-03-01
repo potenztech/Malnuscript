@@ -154,7 +154,7 @@ function playMessageTone() {
 // Function to toggle typing indicator and frame
 function toggleTypingIndicatorAndFrame(containerIndex, show) {
     for (var i = 0; i < typingIndicators.length; i++) {
-        typingIndicators[i].style.display = i === containerIndex && show ? "block" : "none";
+        typingIndicators[i].style.display = i === containerIndex && show ? "flex" : "none";
     }
 
     // Show frame when typing indicator is hidden
