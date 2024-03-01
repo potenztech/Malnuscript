@@ -459,8 +459,10 @@ video.addEventListener('play', function() {
         changeLogo();
         startAnimationFromIndex5();
         animationStarted = true;
+        video.removeAttribute('controls');
     }
 });
+
 
 // Event listener for button click
 document.getElementById("startAnimationButton").addEventListener("click", startAnimation);

@@ -79,7 +79,7 @@
 
 .intro-content {
     margin: auto;
-    padding: 20px;
+    padding: 0px 20px;
     text-align: center;
     max-width: 450px;
     display: flex;
@@ -378,6 +378,7 @@ section {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .msg36{
+    margin: auto;
     display: none;
     width: 100%;
     text-align: center;
